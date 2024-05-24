@@ -83,12 +83,12 @@ if __name__ == "__main__":
     originalList.add_last("MSP")
     originalList.add_last("ATL")
     originalList.add_last("BOS")
-    print("Original:", originalList)
+    print(originalList)
 
     clonedList = originalList.clone()
-    print("Cloned:", clonedList)
+    print(clonedList)
 
     originalList.add_last("ABC")
-    print("Original:", originalList)
+    print(originalList)
     clonedList.add_last("XYZ")
-    print("Cloned:", clonedList)
+    print(clonedList)

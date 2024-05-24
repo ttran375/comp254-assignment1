@@ -98,16 +98,33 @@ public class CircularlyLinkedList<E> {
         return sb.toString();
     }
 
+    public CircularlyLinkedList<E> clone() {
+        CircularlyLinkedList<E> cloneList = new CircularlyLinkedList<>();
+        if (!this.isEmpty()) {
+            Node<E> current = this.tail.getNext();
+            cloneList.addLast(current.getElement());
+            current = current.getNext();
+            while (current != this.tail.getNext()) {
+                cloneList.addLast(current.getElement());
+                current = current.getNext();
+            }
+        }
+        return cloneList;
+    }
+
     public static void main(String[] args) {
-        CircularlyLinkedList<String> circularList = new CircularlyLinkedList<String>();
-        circularList.addFirst("LAX");
-        circularList.addLast("MSP");
-        circularList.addLast("ATL");
-        circularList.addLast("BOS");
-        System.out.println(circularList);
-        circularList.removeFirst();
-        System.out.println(circularList);
-        circularList.rotate();
-        System.out.println(circularList);
+        CircularlyLinkedList<String> originalList = new CircularlyLinkedList<>();
+        originalList.addLast("MSP");
+        originalList.addLast("ATL");
+        originalList.addLast("BOS");
+        System.out.println(originalList);
+
+        CircularlyLinkedList<String> clonedList = originalList.clone();
+        System.out.println(clonedList);
+
+        originalList.addLast("ABC");
+        System.out.println(originalList);
+        clonedList.addLast("XYZ");
+        System.out.println(clonedList);
     }
 }
