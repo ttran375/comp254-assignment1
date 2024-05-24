@@ -77,6 +77,30 @@ class CircularlyLinkedList:
                 current = current.next_node
         return clone_list
 
+    def same_sequence(self, other):
+        if len(self) != len(other):
+            return False
+
+        if self.is_empty() and other.is_empty():
+            return True
+
+        start = self.tail.next_node
+        for _ in range(len(self)):
+            current_self = start
+            current_other = other.tail.next_node
+            match = True
+            for _ in range(len(self)):
+                if current_self.element != current_other.element:
+                    match = False
+                    break
+                current_self = current_self.next_node
+                current_other = current_other.next_node
+            if match:
+                return True
+            start = start.next_node
+
+        return False
+
 
 if __name__ == "__main__":
     originalList = CircularlyLinkedList()
@@ -92,3 +116,32 @@ if __name__ == "__main__":
     print(originalList)
     clonedList.add_last("XYZ")
     print(clonedList)
+
+    list1 = CircularlyLinkedList()
+    list1.add_last("MSP")
+    list1.add_last("ATL")
+    list1.add_last("BOS")
+
+    list2 = CircularlyLinkedList()
+    list2.add_last("ATL")
+    list2.add_last("BOS")
+    list2.add_last("MSP")
+
+    list3 = CircularlyLinkedList()
+    list3.add_last("BOS")
+    list3.add_last("MSP")
+    list3.add_last("ATL")
+
+    list4 = CircularlyLinkedList()
+    list4.add_last("MSP")
+    list4.add_last("BOS")
+    list4.add_last("ATL")
+
+    print("List1:", list1)
+    print("List2:", list2)
+    print("List3:", list3)
+    print("List4:", list4)
+
+    print("List1 and List2 same sequence:", list1.same_sequence(list2))
+    print("List1 and List3 same sequence:", list1.same_sequence(list3))
+    print("List1 and List4 same sequence:", list1.same_sequence(list4))
