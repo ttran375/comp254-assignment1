@@ -47,15 +47,55 @@ class DoublyLinkedList:
         else:
             print("List does not have any nodes")
 
+    def swapTwoNodes(self, node1, node2):
+        if node1 == node2:
+            return
 
-def clone_linked_list(l1):
-    dl = DoublyLinkedList()
-    temp = l1.head
-    if temp is not None:
-        while temp is not None:
-            dl.add_node(temp.data)
-            temp = temp.next
-    return dl
+        # Check if node1 and node2 are adjacent
+        if node1.next == node2:
+            node1.previous, node2.next, node2.previous, node1.next = (
+                node2.previous,
+                node1,
+                node1,
+                node2.next,
+            )
+            if node1.previous:
+                node1.previous.next = node2
+            if node2.next:
+                node2.next.previous = node1
+            if self.head == node1:
+                self.head = node2
+            if self.tail == node2:
+                self.tail = node1
+        elif node2.next == node1:
+            self.swapTwoNodes(node2, node1)
+        else:
+            node1_next = node1.next
+            node1_prev = node1.previous
+            node2_next = node2.next
+            node2_prev = node2.previous
+
+            if node1_next:
+                node1_next.previous = node2
+            if node1_prev:
+                node1_prev.next = node2
+            if node2_next:
+                node2_next.previous = node1
+            if node2_prev:
+                node2_prev.next = node1
+
+            node1.next, node2.next = node2_next, node1_next
+            node1.previous, node2.previous = node2_prev, node1_prev
+
+            if self.head == node1:
+                self.head = node2
+            elif self.head == node2:
+                self.head = node1
+
+            if self.tail == node1:
+                self.tail = node2
+            elif self.tail == node2:
+                self.tail = node1
 
 
 if __name__ == "__main__":
@@ -63,5 +103,12 @@ if __name__ == "__main__":
     list1.add_node("MSP")
     list1.add_node("ATL")
     list1.add_node("BOS")
-    # list1.remove_first()
-    print(list1.display_list())
+    list1.add_node("LAX")
+    print("Before swapping:")
+    list1.display_list()
+
+    node1 = list1.head.next
+    node2 = list1.tail
+    list1.swapTwoNodes(node1, node2)
+    print("After swapping:")
+    list1.display_list()
