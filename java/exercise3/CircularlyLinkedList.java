@@ -97,79 +97,16 @@ public class CircularlyLinkedList<E> {
         return sb.toString();
     }
 
-    public CircularlyLinkedList<E> clone() {
-        CircularlyLinkedList<E> other = new CircularlyLinkedList<>();
-        if (size == 0) {
-            return other;
-        }
-
-        Node<E> walk = tail.getNext();
-        for (int i = 0; i < size; i++) {
-            other.addLast(walk.getElement());
-            walk = walk.getNext();
-        }
-        return other;
-    }
-
-    public boolean areEqual(CircularlyLinkedList<E> other) {
-        if (this.size != other.size)
-            return false;
-        if (this.isEmpty() && other.isEmpty())
-            return true;
-        if (this.isEmpty() || other.isEmpty())
-            return false;
-
-        Node<E> node1 = this.tail.getNext();
-        Node<E> node2 = other.tail.getNext();
-
-        for (int i = 0; i < this.size; i++) {
-            if (node1.getElement().equals(node2.getElement())) {
-                Node<E> temp1 = node1;
-                Node<E> temp2 = node2;
-                boolean match = true;
-                for (int j = 0; j < this.size; j++) {
-                    if (!temp1.getElement().equals(temp2.getElement())) {
-                        match = false;
-                        break;
-                    }
-                    temp1 = temp1.getNext();
-                    temp2 = temp2.getNext();
-                }
-                if (match)
-                    return true;
-            }
-            node1 = node1.getNext();
-        }
-        return false;
-    }
-
     public static void main(String[] args) {
         CircularlyLinkedList<String> circularList = new CircularlyLinkedList<String>();
         circularList.addFirst("LAX");
         circularList.addLast("MSP");
         circularList.addLast("ATL");
         circularList.addLast("BOS");
-        System.out.println("Original: " + circularList);
-
-        CircularlyLinkedList<String> clonedList = circularList.clone();
-        System.out.println("Cloned: " + clonedList);
-
-        CircularlyLinkedList<String> L1 = new CircularlyLinkedList<>();
-        L1.addLast("A");
-        L1.addLast("B");
-        L1.addLast("C");
-
-        CircularlyLinkedList<String> L2 = new CircularlyLinkedList<>();
-        L2.addLast("B");
-        L2.addLast("C");
-        L2.addLast("A");
-
-        CircularlyLinkedList<String> L3 = new CircularlyLinkedList<>();
-        L3.addLast("C");
-        L3.addLast("B");
-        L3.addLast("A");
-
-        System.out.println("L1 and L2 are equal: " + L1.areEqual(L2)); // Should print true
-        System.out.println("L1 and L3 are equal: " + L1.areEqual(L3)); // Should print false
+        System.out.println(circularList);
+        circularList.removeFirst();
+        System.out.println(circularList);
+        circularList.rotate();
+        System.out.println(circularList);
     }
 }
