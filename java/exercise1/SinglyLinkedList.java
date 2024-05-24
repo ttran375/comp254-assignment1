@@ -188,11 +188,11 @@ public class SinglyLinkedList<E> implements Cloneable {
     list.addLast("ATL");
     list.addLast("BOS");
     list.addFirst("LAX");
-    System.out.println("Before swapping: " + list);
+    System.out.println(list);
 
     Node<String> node1 = list.head.getNext();
     Node<String> node2 = list.tail;
     list.swapTwoNodes(node1, node2);
-    System.out.println("After swapping: " + list);
+    System.out.println(list);
   }
 }

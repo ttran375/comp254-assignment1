@@ -103,11 +103,9 @@ if __name__ == "__main__":
     list1.add_node("ATL")
     list1.add_node("BOS")
     list1.add_node("LAX")
-    print("Before swapping:")
     list1.display_list()
 
     node1 = list1.head.next
     node2 = list1.tail
     list1.swapTwoNodes(node1, node2)
-    print("After swapping:")
     list1.display_list()

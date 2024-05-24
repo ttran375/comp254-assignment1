@@ -189,11 +189,11 @@ public class DoublyLinkedList<E> {
     list.addLast("ATL");
     list.addLast("BOS");
     list.addLast("LAX");
-    System.out.println("Before swapping: " + list);
+    System.out.println(list);
 
     Node<String> node1 = list.header.getNext().getNext();
     Node<String> node2 = list.trailer.getPrev();
     list.swapTwoNodes(node1, node2);
-    System.out.println("After swapping: " + list);
+    System.out.println(list);
   }
 }
