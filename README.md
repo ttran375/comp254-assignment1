@@ -60,7 +60,9 @@ one list.
 
 > (3 marks)
 
-`SinglyLinkedList.java`
+## Appendix
+
+### SinglyLinkedList.java
 
 ``` java
 /*
@@ -303,7 +305,7 @@ public class SinglyLinkedList<E> implements Cloneable {
 
 ```
 
-`DoublyLinkedList.java`
+### DoublyLinkedList.java
 
 ``` java
 /*
@@ -550,7 +552,7 @@ public class DoublyLinkedList<E> {
 
 ```
 
-`CircularlyLinkedList.java`
+### CircularlyLinkedList.java
 
 ``` java
 /*
@@ -756,5 +758,254 @@ public class CircularlyLinkedList<E> {
 	  //
   }
 }
+
+```
+
+### SinglyLinkedlist.py
+
+``` python
+# -*- coding: utf-8 -*-
+
+
+class Node:
+    def __init__(self, element, next_node=None):
+        self.element = element
+        self.next_node = next_node
+
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.size = 0
+
+    def __len__(self):
+        return self.size
+
+    def is_empty(self):
+        return self.size == 0
+
+    def first(self):
+        if self.is_empty():
+            return None
+        return self.head.element
+
+    def last(self):
+        if self.is_empty():
+            return None
+        return self.tail.element
+
+    def add_first(self, e):
+        newest = Node(e, next_node=self.head)
+        self.head = newest
+        if self.is_empty():
+            self.tail = self.head
+        self.size += 1
+
+    def add_last(self, e):
+        newest = Node(e)
+        if self.is_empty():
+            self.head = newest
+        else:
+            self.tail.next_node = newest
+        self.tail = newest
+        self.size += 1
+
+    def remove_first(self):
+        if self.is_empty():
+            return None
+        answer = self.head.element
+        self.head = self.head.next_node
+        self.size -= 1
+        if self.is_empty():
+            self.tail = None
+        return answer
+
+    def __eq__(self, other):
+        if not isinstance(other, SinglyLinkedList) or self.size != len(other):
+            return False
+
+        node1, node2 = self.head, other.head
+        while node1 is not None:
+            if node1.element != node2.element:
+                return False
+            node1, node2 = node1.next_node, node2.next_node
+
+        return True
+
+    def __str__(self):
+        result = []
+        node = self.head
+        while node is not None:
+            result.append(str(node.element))
+            node = node.next_node
+        return "(" + ", ".join(result) + ")"
+
+
+if __name__ == "__main__":
+    list1 = SinglyLinkedList()
+    list1.add_first("MSP")
+    list1.add_last("ATL")
+    list1.add_last("BOS")
+    list1.remove_first()
+    print(list1)
+
+```
+
+### DoublyLinkedList.py
+
+``` python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.previous = None
+        self.next = None
+
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+        # TO check weather list is empty or not?
+
+    def is_empty(self):
+        if self.head is None:
+            return True
+        else:
+            return False
+
+    def add_node(self, data):
+        #  Creating New Node
+        newNode = Node(data)
+
+        # Checking where the head and tail pointer is pointing.
+        # if first node is added to the list then below condition should be true.
+        if self.head is None:
+            self.head = newNode
+            newNode.previous = newNode.next = None
+
+        else:
+            # Addding new node at the last
+            self.tail.next = newNode
+            newNode.previous = self.tail
+            newNode.next = None
+        self.tail = newNode
+
+    def display_list(self):
+        # Creating temp pointer to travers
+        temp = self.head
+        if temp is not None:
+            while temp is not None:
+                print(temp.data, end=" -> ")
+                temp = temp.next
+            else:
+                print("NULL")
+        else:
+            print("List does not have any nodes")
+
+
+def clone_linked_list(l1):
+    dl = DoublyLinkedList()
+    temp = l1.head
+    if temp is not None:
+        while temp is not None:
+            dl.add_node(temp.data)
+            temp = temp.next
+    return dl
+
+
+if __name__ == "__main__":
+    list1 = DoublyLinkedList()
+    list1.add_node("MSP")
+    list1.add_node("ATL")
+    list1.add_node("BOS")
+    # list1.remove_first()
+    print(list1.display_list())
+
+```
+
+### Circularlylinkedlist.py
+
+``` python
+# -*- coding: utf-8 -*-
+
+
+class Node:
+    def __init__(self, element, next_node=None):
+        self.element = element
+        self.next_node = next_node
+
+
+class CircularlyLinkedList:
+    def __init__(self):
+        self.tail = None
+        self.size = 0
+
+    def __len__(self):
+        return self.size
+
+    def is_empty(self):
+        return self.size == 0
+
+    def first(self):
+        if self.is_empty():
+            return None
+        return self.tail.next_node.element
+
+    def last(self):
+        if self.is_empty():
+            return None
+        return self.tail.element
+
+    def rotate(self):
+        if self.tail is not None:
+            self.tail = self.tail.next_node
+
+    def add_first(self, e):
+        newest = Node(e)
+        if self.is_empty():
+            newest.next_node = newest  # a new list of one element
+        else:
+            newest.next_node = self.tail.next_node
+            self.tail.next_node = newest
+        self.tail = newest
+        self.size += 1
+
+    def add_last(self, e):
+        self.add_first(e)
+        self.tail = self.tail.next_node
+
+    def remove_first(self):
+        if self.is_empty():
+            return None
+        old_head = self.tail.next_node
+        if self.size == 1:
+            self.tail = None
+        else:
+            self.tail.next_node = old_head.next_node
+        self.size -= 1
+        return old_head.element
+
+    def __str__(self):
+        if self.is_empty():
+            return "[]"
+        result = []
+        current = self.tail.next_node
+        result.append(str(current.element))
+        current = current.next_node
+        while current != self.tail.next_node:
+            result.append(str(current.element))
+            current = current.next_node
+        return "[" + ", ".join(result) + "]"
+
+
+if __name__ == "__main__":
+    originalList = CircularlyLinkedList()
+    originalList.add_last("MSP")
+    originalList.add_last("ATL")
+    originalList.add_last("BOS")
+
+    print(originalList)  # Should print: [MSP, ATL, BOS]
 
 ```
