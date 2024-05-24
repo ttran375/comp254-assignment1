@@ -85,18 +85,10 @@ if __name__ == "__main__":
     originalList.add_last("BOS")
     print("Original:", originalList)
 
-    clonedList = originalList
+    clonedList = originalList.clone()
     print("Cloned:", clonedList)
 
-    clonedList.add_last("LAX")  # Modifying the clonedList
-    print(originalList)  # Output: [MSP, ATL, BOS, LAX] (originalList also changes)
-    print(clonedList)    # Output: [MSP, ATL, BOS, LAX]
-
-    clonedList = originalList.clone()  # Using clone method to create a new independent copy
-
-    print(originalList)  # Output: [MSP, ATL, BOS]
-    print(clonedList)    # Output: [MSP, ATL, BOS]
-
-    clonedList.add_last("LAX")  # Modifying the clonedList
-    print(originalList)  # Output: [MSP, ATL, BOS] (originalList remains unchanged)
-    print(clonedList)    # Output: [MSP, ATL, BOS, LAX]
+    originalList.add_last("ABC")
+    print("Original:", originalList)
+    clonedList.add_last("XYZ")
+    print("Cloned:", clonedList)
