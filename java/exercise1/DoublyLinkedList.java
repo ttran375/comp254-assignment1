@@ -113,14 +113,74 @@ public class DoublyLinkedList<E> {
     return sb.toString();
   }
 
+  public void swapTwoNodes(Node<E> node1, Node<E> node2) {
+    if (node1 == node2)
+      return;
+
+    Node<E> prev1 = node1.getPrev();
+    Node<E> next1 = node1.getNext();
+    Node<E> prev2 = node2.getPrev();
+    Node<E> next2 = node2.getNext();
+
+    if (node1 == next2) {
+      // node1 is right after node2
+      node2.setNext(node1);
+      node2.setPrev(prev1);
+      node1.setPrev(node2);
+      node1.setNext(next1);
+      if (prev1 != null)
+        prev1.setNext(node2);
+      if (next1 != null)
+        next1.setPrev(node1);
+    } else if (node2 == next1) {
+      // node2 is right after node1
+      node1.setNext(node2);
+      node1.setPrev(prev2);
+      node2.setPrev(node1);
+      node2.setNext(next2);
+      if (prev2 != null)
+        prev2.setNext(node1);
+      if (next2 != null)
+        next2.setPrev(node2);
+    } else {
+      // nodes are not adjacent
+      node1.setNext(next2);
+      node1.setPrev(prev2);
+      node2.setNext(next1);
+      node2.setPrev(prev1);
+      if (prev1 != null)
+        prev1.setNext(node2);
+      if (next1 != null)
+        next1.setPrev(node2);
+      if (prev2 != null)
+        prev2.setNext(node1);
+      if (next2 != null)
+        next2.setPrev(node1);
+    }
+
+    // Update head and tail if necessary
+    if (header.getNext() == node1)
+      header.setNext(node2);
+    else if (header.getNext() == node2)
+      header.setNext(node1);
+    if (trailer.getPrev() == node1)
+      trailer.setPrev(node2);
+    else if (trailer.getPrev() == node2)
+      trailer.setPrev(node1);
+  }
+
   public static void main(String[] args) {
-    DoublyLinkedList<String> list = new DoublyLinkedList<String>();
+    DoublyLinkedList<String> list = new DoublyLinkedList<>();
     list.addFirst("MSP");
     list.addLast("ATL");
     list.addLast("BOS");
     list.addFirst("LAX");
 
-    System.out.println(list);
-    System.out.println(list.first());
+    System.out.println("Original list: " + list);
+
+    Node<String> node1 = list.header.getNext().getNext(); // MSP
+    Node<String> node2 = list.header.getNext().getNext().getNext().getNext(); // BOS
+    list.swapTwoNodes(node1, node2);
+    System.out.println("After swapping MSP and BOS: " + list);
   }
 }
