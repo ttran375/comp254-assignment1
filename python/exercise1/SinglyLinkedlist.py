@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-
-
 class Node:
     def __init__(self, element, next_node=None):
         self.element = element
@@ -74,6 +71,38 @@ class SinglyLinkedList:
             result.append(str(node.element))
             node = node.next_node
         return "(" + ", ".join(result) + ")"
+
+    def swapTwoNodes(self, node1, node2):
+        if node1 == node2:
+            return
+
+        prev1 = prev2 = None
+        curr1 = curr2 = self.head
+
+        while curr1 and curr1 != node1:
+            prev1 = curr1
+            curr1 = curr1.next_node
+
+        while curr2 and curr2 != node2:
+            prev2 = curr2
+            curr2 = curr2.next_node
+
+        if not curr1 or not curr2:
+            return
+
+        if prev1:
+            prev1.next_node = curr2
+        else:
+            self.head = curr2
+
+        if prev2:
+            prev2.next_node = curr1
+        else:
+            self.head = curr1
+
+        temp = curr1.next_node
+        curr1.next_node = curr2.next_node
+        curr2.next_node = temp
 
 
 if __name__ == "__main__":
