@@ -76,39 +76,48 @@ class SinglyLinkedList:
         if node1 == node2:
             return
 
-        prev1 = prev2 = None
-        curr1 = curr2 = self.head
+        prevNode1 = prevNode2 = None
+        currentNode = self.head
 
-        while curr1 and curr1 != node1:
-            prev1 = curr1
-            curr1 = curr1.next_node
+        while currentNode is not None:
+            if currentNode.next_node == node1:
+                prevNode1 = currentNode
+            elif currentNode.next_node == node2:
+                prevNode2 = currentNode
+            currentNode = currentNode.next_node
 
-        while curr2 and curr2 != node2:
-            prev2 = curr2
-            curr2 = curr2.next_node
-
-        if not curr1 or not curr2:
+        if prevNode1 is None and prevNode2 is None:
             return
 
-        if prev1:
-            prev1.next_node = curr2
+        if prevNode1 is not None:
+            prevNode1.next_node = node2
         else:
-            self.head = curr2
+            self.head = node2
 
-        if prev2:
-            prev2.next_node = curr1
+        if prevNode2 is not None:
+            prevNode2.next_node = node1
         else:
-            self.head = curr1
+            self.head = node1
 
-        temp = curr1.next_node
-        curr1.next_node = curr2.next_node
-        curr2.next_node = temp
+        temp = node1.next_node
+        node1.next_node = node2.next_node
+        node2.next_node = temp
+
+        if self.tail == node1:
+            self.tail = node2
+        elif self.tail == node2:
+            self.tail = node1
 
 
 if __name__ == "__main__":
-    list1 = SinglyLinkedList()
-    list1.add_first("MSP")
-    list1.add_last("ATL")
-    list1.add_last("BOS")
-    list1.remove_first()
-    print(list1)
+    list = SinglyLinkedList()
+    list.add_first("MSP")
+    list.add_last("ATL")
+    list.add_last("BOS")
+    list.add_first("LAX")
+    print(f"Before swapping: {list}")
+
+    node1 = list.head.next_node
+    node2 = list.tail
+    list.swapTwoNodes(node1, node2)
+    print(f"After swapping: {list}")
