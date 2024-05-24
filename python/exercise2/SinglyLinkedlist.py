@@ -87,9 +87,9 @@ class SinglyLinkedList:
 
 if __name__ == "__main__":
     list1 = SinglyLinkedList()
-    # list1.add_first("MSP")
-    # list1.add_last("ATL")
-    # list1.add_last("BOS")
+    list1.add_first("MSP")
+    list1.add_last("ATL")
+    list1.add_last("BOS")
     print("List 1:", list1)
 
     list2 = SinglyLinkedList()
