@@ -290,15 +290,15 @@ public class SinglyLinkedList<E> implements Cloneable {
   //main method
   public static void main(String[] args)
   {
-	  
-	  SinglyLinkedList<String> list = new SinglyLinkedList<String>();
-	  list.addFirst("MSP");
-	  list.addLast("ATL");
-	  list.addLast("BOS");
-	  //
-	  list.addFirst("LAX");
-	  System.out.println(list);
-	  //
+   
+   SinglyLinkedList<String> list = new SinglyLinkedList<String>();
+   list.addFirst("MSP");
+   list.addLast("ATL");
+   list.addLast("BOS");
+   //
+   list.addFirst("LAX");
+   System.out.println(list);
+   //
   }
   
 }
@@ -536,17 +536,17 @@ public class DoublyLinkedList<E> {
 //main method
   public static void main(String[] args)
   {
-	  //create and populate a doubly linked list
-	  DoublyLinkedList<String> list = new DoublyLinkedList<String>();
-	  list.addFirst("MSP");
-	  list.addLast("ATL");
-	  list.addLast("BOS");
-	  //
-	  list.addFirst("LAX");
-	  
-	  System.out.println(list);
-	  System.out.println(list.first());
-	  //
+   //create and populate a doubly linked list
+   DoublyLinkedList<String> list = new DoublyLinkedList<String>();
+   list.addFirst("MSP");
+   list.addLast("ATL");
+   list.addLast("BOS");
+   //
+   list.addFirst("LAX");
+   
+   System.out.println(list);
+   System.out.println(list.first());
+   //
   }
 } //----------- end of DoublyLinkedList class -----------
 
@@ -741,21 +741,21 @@ public class CircularlyLinkedList<E> {
 //main method
   public static void main(String[] args)
   {
-	  
-	  //(LAX, MSP, ATL, BOS)
-	  CircularlyLinkedList<String> circularList = new CircularlyLinkedList<String>();
-	  circularList.addFirst("LAX");
-	  circularList.addLast("MSP");
-	  circularList.addLast("ATL");
-	  circularList.addLast("BOS");
-	  //
-	  System.out.println(circularList);
-	  circularList.removeFirst();
-	  System.out.println(circularList);
-	  circularList.rotate();
-	  System.out.println(circularList);
+   
+   //(LAX, MSP, ATL, BOS)
+   CircularlyLinkedList<String> circularList = new CircularlyLinkedList<String>();
+   circularList.addFirst("LAX");
+   circularList.addLast("MSP");
+   circularList.addLast("ATL");
+   circularList.addLast("BOS");
+   //
+   System.out.println(circularList);
+   circularList.removeFirst();
+   System.out.println(circularList);
+   circularList.rotate();
+   System.out.println(circularList);
 
-	  //
+   //
   }
 }
 
@@ -963,14 +963,14 @@ class CircularlyLinkedList:
             self.tail = self.tail.next_node
 
     def add_first(self, e):
+      if self.is_empty():
+        self.tail=Node(e)
+        self.tail.next_node = self.tail # a new list of one element
+      else:
         newest = Node(e)
-        if self.is_empty():
-            newest.next_node = newest  # a new list of one element
-        else:
-            newest.next_node = self.tail.next_node
-            self.tail.next_node = newest
-        self.tail = newest
-        self.size += 1
+        newest.next_node = self.tail.next_node
+        self.tail.next_node = newest
+      self.size += 1
 
     def add_last(self, e):
         self.add_first(e)
