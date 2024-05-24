@@ -137,12 +137,30 @@ public class SinglyLinkedList<E> implements Cloneable {
     return sb.toString();
   }
 
+  private void concatenate(SinglyLinkedList<String> list2) {
+    Node walk = head;
+    while (walk.next != null) {
+      walk = walk.getNext();
+    }
+    walk.setNext(list2.head);
+    size = this.size + list2.size;
+    tail = (Node<E>) list2.tail;
+  }
+
   public static void main(String[] args) {
-    SinglyLinkedList<String> list = new SinglyLinkedList<String>();
-    list.addFirst("MSP");
-    list.addLast("ATL");
-    list.addLast("BOS");
-    list.addFirst("LAX");
-    System.out.println(list);
+    SinglyLinkedList<String> list1 = new SinglyLinkedList<String>();
+    list1.addFirst("MSP");
+    list1.addLast("ATL");
+    list1.addLast("BOS");
+    list1.addFirst("LAX");
+    System.out.println(list1);
+
+    SinglyLinkedList<String> list2 = new SinglyLinkedList<String>();
+    list2.addFirst("YYZ");
+    list2.addFirst("YVR");
+    System.out.println(list2);
+
+    list1.concatenate(list2);
+    System.out.println(list1);
   }
 }

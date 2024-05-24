@@ -1,9 +1,7 @@
 package exercise2;
 
 public class DoublyLinkedList<E> {
-
   private static class Node<E> {
-
     private E element;
     private Node<E> prev;
     private Node<E> next;
@@ -33,7 +31,6 @@ public class DoublyLinkedList<E> {
     public void setNext(Node<E> n) {
       next = n;
     }
-
   }
 
   private Node<E> header;
@@ -116,12 +113,26 @@ public class DoublyLinkedList<E> {
   }
 
   public static void main(String[] args) {
-    DoublyLinkedList<String> list = new DoublyLinkedList<String>();
-    list.addFirst("MSP");
-    list.addLast("ATL");
-    list.addLast("BOS");
-    list.addFirst("LAX");
-    System.out.println(list);
-    System.out.println(list.first());
+    DoublyLinkedList<String> list1 = new DoublyLinkedList<String>();
+    list1.addFirst("MSP");
+    list1.addLast("ATL");
+    list1.addLast("BOS");
+    //
+    list1.addFirst("LAX");
+    System.out.println(list1);
+
+    DoublyLinkedList<String> list2 = new DoublyLinkedList<String>();
+    list2.addFirst("YYZ");
+    list2.addLast("YVR");
+    System.out.println(list2);
+    list1.concatenate(list2);
+    System.out.println(list1);
+  }
+
+  private void concatenate(DoublyLinkedList<String> list2) {
+    // TODO Auto-generated method stub
+    trailer.prev.setNext((Node<E>) list2.header.next);
+    list2.header.next.setPrev((Node<String>) trailer.getPrev());
+    trailer = (Node<E>) list2.trailer;
   }
 }
