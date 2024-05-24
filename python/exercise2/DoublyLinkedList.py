@@ -62,7 +62,6 @@ if __name__ == "__main__":
     list1.add_node("MSP")
     list1.add_node("ATL")
     list1.add_node("BOS")
-    print("List 1:")
     list1.display_list()
 
     list2 = DoublyLinkedList()
@@ -70,9 +69,7 @@ if __name__ == "__main__":
     list2.add_node("ABC")
     list2.add_node("XYZ")
     list2.add_node("JFK")
-    print("List 2:")
     list2.display_list()
 
     list1.concatenate(list2)
-    print("Concatenated List:")
     list1.display_list()

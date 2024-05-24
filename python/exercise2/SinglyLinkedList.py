@@ -88,12 +88,12 @@ if __name__ == "__main__":
     list1.add_last("ATL")
     list1.add_last("BOS")
     list1.add_first("LAX")
-    print("List 1:", list1)
+    print(list1)
 
     list2 = SinglyLinkedList()
     list2.add_first("YYZ")
     list2.add_first("YVR")
-    print("List 2:", list2)
+    print(list2)
 
     list1.concatenate(list2)
-    print("Concatenated List:", list1)
+    print(list1)
