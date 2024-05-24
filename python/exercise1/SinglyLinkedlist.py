@@ -76,45 +76,35 @@ class SinglyLinkedList:
         return "(" + ", ".join(result) + ")"
 
     def swapTwoNodes(self, node1, node2):
-        # If the nodes to be swapped are the same, no need to do anything
         if node1 == node2:
             return
 
-        # Initialize pointers for tracking previous and current nodes
         prev1 = prev2 = None
         curr1 = curr2 = self.head
 
-        # Traverse the list to find node1 and node2 and keep track of their previous node
         while curr1 and curr1 != node1:
             prev1 = curr1
             curr1 = curr1.next_node
+
         while curr2 and curr2 != node2:
             prev2 = curr2
             curr2 = curr2.next_node
 
-        # If either node1 or node2 is not found in the list, exit the function
         if not curr1 or not curr2:
             return
 
-        # If prev1 is not None, link the previous node of node1 to node2
-        # Otherwise, update the head to point to node2
         if prev1:
             prev1.next_node = curr2
         else:
             self.head = curr2
 
-        # If prev2 is not None, link the previous node of node2 to node1
-        # Otherwise, update the head to point to node1
         if prev2:
             prev2.next_node = curr1
         else:
             self.head = curr1
 
-        # Swap the next pointers of node1 and node2
         curr1.next_node, curr2.next_node = curr2.next_node, curr1.next_node
 
-        # If the new next node of curr1 is None, update the tail to curr1
-        # If the new next node of curr2 is None, update the tail to curr2
         if curr1.next_node is None:
             self.tail = curr1
         elif curr2.next_node is None:
