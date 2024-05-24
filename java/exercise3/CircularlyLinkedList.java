@@ -98,41 +98,16 @@ public class CircularlyLinkedList<E> {
         return sb.toString();
     }
 
-    public CircularlyLinkedList<E> clone() {
-        CircularlyLinkedList<E> cloneList = new CircularlyLinkedList<>();
-        if (!isEmpty()) {
-            Node<E> current = tail.getNext();
-            cloneList.addLast(current.getElement());
-            current = current.getNext();
-            while (current != tail.getNext()) {
-                cloneList.addLast(current.getElement());
-                current = current.getNext();
-            }
-        }
-        return cloneList;
-    }
-
     public static void main(String[] args) {
-        CircularlyLinkedList<String> originalList = new CircularlyLinkedList<>();
-        originalList.addLast("MSP");
-        originalList.addLast("ATL");
-        originalList.addLast("BOS");
-        System.out.println("Original: " + originalList);
-
-        CircularlyLinkedList<String> clonedList = originalList.clone();
-        System.out.println("Cloned: " + clonedList);
-
-        originalList.addLast("ABC");
-        System.out.println("Original after adding ABC: " + originalList);
-
-        clonedList.addLast("XYZ");
-        System.out.println("Cloned after adding XYZ: " + clonedList);
-    }
-
-    private void concatenate(CircularlyLinkedList<String> circularlyList2) {
-        Node head = tail.getNext();
-        tail.setNext((Node<E>) circularlyList2.tail.getNext());
-        circularlyList2.tail.setNext(head);
-        tail = (Node<E>) circularlyList2.tail;
+        CircularlyLinkedList<String> circularList = new CircularlyLinkedList<String>();
+        circularList.addFirst("LAX");
+        circularList.addLast("MSP");
+        circularList.addLast("ATL");
+        circularList.addLast("BOS");
+        System.out.println(circularList);
+        circularList.removeFirst();
+        System.out.println(circularList);
+        circularList.rotate();
+        System.out.println(circularList);
     }
 }
