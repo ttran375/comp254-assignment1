@@ -137,12 +137,62 @@ public class SinglyLinkedList<E> implements Cloneable {
     return sb.toString();
   }
 
+  public void swapTwoNodes(Node<E> node1, Node<E> node2) {
+    if (node1 == node2) {
+      return;
+    }
+
+    Node<E> prev1 = null, prev2 = null;
+    Node<E> curr1 = head, curr2 = head;
+
+    while (curr1 != null && curr1 != node1) {
+      prev1 = curr1;
+      curr1 = curr1.getNext();
+    }
+
+    while (curr2 != null && curr2 != node2) {
+      prev2 = curr2;
+      curr2 = curr2.getNext();
+    }
+
+    if (curr1 == null || curr2 == null) {
+      return;
+    }
+
+    if (prev1 != null) {
+      prev1.setNext(curr2);
+    } else {
+      head = curr2;
+    }
+
+    if (prev2 != null) {
+      prev2.setNext(curr1);
+    } else {
+      head = curr1;
+    }
+
+    Node<E> temp = curr1.getNext();
+    curr1.setNext(curr2.getNext());
+    curr2.setNext(temp);
+
+    if (curr1.getNext() == null) {
+      tail = curr1;
+    } else if (curr2.getNext() == null) {
+      tail = curr2;
+    }
+  }
+
   public static void main(String[] args) {
     SinglyLinkedList<String> list = new SinglyLinkedList<String>();
     list.addFirst("MSP");
     list.addLast("ATL");
     list.addLast("BOS");
     list.addFirst("LAX");
-    System.out.println(list);
+    System.out.println("Before swapping: " + list);
+
+    Node<String> node1 = list.head.getNext();
+    Node<String> node2 = list.tail;
+    list.swapTwoNodes(node1, node2);
+    System.out.println("After swapping: " + list);
   }
 }

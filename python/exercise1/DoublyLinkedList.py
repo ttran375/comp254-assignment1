@@ -51,7 +51,6 @@ class DoublyLinkedList:
         if node1 == node2:
             return
 
-        # Check if node1 and node2 are adjacent
         if node1.next == node2:
             node1.previous, node2.next, node2.previous, node1.next = (
                 node2.previous,
