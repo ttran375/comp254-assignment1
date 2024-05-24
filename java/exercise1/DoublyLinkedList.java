@@ -113,65 +113,14 @@ public class DoublyLinkedList<E> {
     return sb.toString();
   }
 
-  public void swapTwoNodes(Node<E> node1, Node<E> node2) {
-    if (node1 == node2)
-      return;
-
-    Node<E> temp1 = header.getNext();
-    Node<E> temp2 = header.getNext();
-
-    while (temp1 != node1 && temp1 != trailer) {
-      temp1 = temp1.getNext();
-    }
-
-    while (temp2 != node2 && temp2 != trailer) {
-      temp2 = temp2.getNext();
-    }
-
-    if (temp1 == trailer || temp2 == trailer) {
-      System.out.println("One or both nodes not found in the list");
-      return;
-    }
-
-    Node<E> pred1 = node1.getPrev();
-    Node<E> succ1 = node1.getNext();
-    Node<E> pred2 = node2.getPrev();
-    Node<E> succ2 = node2.getNext();
-
-    if (node1.getNext() == node2) { // node1 is right before node2
-      node1.setNext(succ2);
-      node2.setPrev(pred1);
-      node1.setPrev(node2);
-      node2.setNext(node1);
-      pred1.setNext(node2);
-      succ2.setPrev(node1);
-    } else if (node2.getNext() == node1) { // node2 is right before node1
-      node2.setNext(succ1);
-      node1.setPrev(pred2);
-      node2.setPrev(node1);
-      node1.setNext(node2);
-      pred2.setNext(node1);
-      succ1.setPrev(node2);
-    } else { // node1 and node2 are not adjacent
-      node1.setNext(succ2);
-      node1.setPrev(pred2);
-      node2.setNext(succ1);
-      node2.setPrev(pred1);
-      pred1.setNext(node2);
-      succ1.setPrev(node2);
-      pred2.setNext(node1);
-      succ2.setPrev(node1);
-    }
-  }
-
   public static void main(String[] args) {
     DoublyLinkedList<String> list = new DoublyLinkedList<String>();
     list.addFirst("MSP");
     list.addLast("ATL");
     list.addLast("BOS");
     list.addFirst("LAX");
-    System.out.println("Before swap: " + list);
-    list.swapTwoNodes(list.header.getNext().getNext(), list.trailer.getPrev().getPrev());
-    System.out.println("After swap: " + list);
+
+    System.out.println(list);
+    System.out.println(list.first());
   }
 }
