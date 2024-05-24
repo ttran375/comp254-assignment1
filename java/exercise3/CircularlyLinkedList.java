@@ -97,16 +97,29 @@ public class CircularlyLinkedList<E> {
         return sb.toString();
     }
 
+    public CircularlyLinkedList<E> clone() {
+        CircularlyLinkedList<E> other = new CircularlyLinkedList<>();
+        if (size == 0) {
+            return other;
+        }
+
+        Node<E> walk = tail.getNext();
+        for (int i = 0; i < size; i++) {
+            other.addLast(walk.getElement());
+            walk = walk.getNext();
+        }
+        return other;
+    }
+
     public static void main(String[] args) {
         CircularlyLinkedList<String> circularList = new CircularlyLinkedList<String>();
         circularList.addFirst("LAX");
         circularList.addLast("MSP");
         circularList.addLast("ATL");
         circularList.addLast("BOS");
-        System.out.println(circularList);
-        circularList.removeFirst();
-        System.out.println(circularList);
-        circularList.rotate();
-        System.out.println(circularList);
+        System.out.println("Original: " + circularList);
+
+        CircularlyLinkedList<String> clonedList = circularList.clone();
+        System.out.println("Cloned: " + clonedList);
     }
 }
