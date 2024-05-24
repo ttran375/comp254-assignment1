@@ -138,12 +138,51 @@ public class SinglyLinkedList<E> implements Cloneable {
     return sb.toString();
   }
 
+  public void swapTwoNodes(Node<E> node1, Node<E> node2) {
+    if (node1 == node2)
+      return;
+
+    Node<E> prev1 = null, prev2 = null, curr = head;
+
+    while (curr != null && (prev1 == null || prev2 == null)) {
+      if (curr.next == node1)
+        prev1 = curr;
+      if (curr.next == node2)
+        prev2 = curr;
+      curr = curr.next;
+    }
+
+    if (prev1 != null)
+      prev1.next = node2;
+    if (prev2 != null)
+      prev2.next = node1;
+
+    Node<E> temp = node1.next;
+    node1.next = node2.next;
+    node2.next = temp;
+
+    if (head == node1)
+      head = node2;
+    else if (head == node2)
+      head = node1;
+
+    if (tail == node1)
+      tail = node2;
+    else if (tail == node2)
+      tail = node1;
+  }
+
   public static void main(String[] args) {
     SinglyLinkedList<String> list = new SinglyLinkedList<String>();
     list.addFirst("MSP");
     list.addLast("ATL");
     list.addLast("BOS");
     list.addFirst("LAX");
-    System.out.println(list);
+    System.out.println("Original list: " + list);
+
+    Node<String> node1 = list.head.next;
+    Node<String> node2 = list.head.next.next.next;
+    list.swapTwoNodes(node1, node2);
+    System.out.println("After swapping MSP and BOS: " + list);
   }
 }

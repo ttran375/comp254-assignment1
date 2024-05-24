@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 class Node:
     def __init__(self, element, next_node=None):
         self.element = element
@@ -72,52 +75,11 @@ class SinglyLinkedList:
             node = node.next_node
         return "(" + ", ".join(result) + ")"
 
-    def swapTwoNodes(self, node1, node2):
-        if node1 == node2:
-            return
-
-        prevNode1 = prevNode2 = None
-        currentNode = self.head
-
-        while currentNode is not None:
-            if currentNode.next_node == node1:
-                prevNode1 = currentNode
-            elif currentNode.next_node == node2:
-                prevNode2 = currentNode
-            currentNode = currentNode.next_node
-
-        if prevNode1 is None and prevNode2 is None:
-            return
-
-        if prevNode1 is not None:
-            prevNode1.next_node = node2
-        else:
-            self.head = node2
-
-        if prevNode2 is not None:
-            prevNode2.next_node = node1
-        else:
-            self.head = node1
-
-        temp = node1.next_node
-        node1.next_node = node2.next_node
-        node2.next_node = temp
-
-        if self.tail == node1:
-            self.tail = node2
-        elif self.tail == node2:
-            self.tail = node1
-
 
 if __name__ == "__main__":
-    list = SinglyLinkedList()
-    list.add_first("MSP")
-    list.add_last("ATL")
-    list.add_last("BOS")
-    list.add_first("LAX")
-    print(f"Before swapping: {list}")
-
-    node1 = list.head.next_node
-    node2 = list.tail
-    list.swapTwoNodes(node1, node2)
-    print(f"After swapping: {list}")
+    list1 = SinglyLinkedList()
+    list1.add_first("MSP")
+    list1.add_last("ATL")
+    list1.add_last("BOS")
+    list1.remove_first()
+    print(list1)
