@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-
-
 class Node:
     def __init__(self, element, next_node=None):
         self.element = element
