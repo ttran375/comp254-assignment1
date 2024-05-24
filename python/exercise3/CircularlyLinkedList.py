@@ -137,11 +137,11 @@ if __name__ == "__main__":
     list4.add_last("BOS")
     list4.add_last("ATL")
 
-    print("List1:", list1)
-    print("List2:", list2)
-    print("List3:", list3)
-    print("List4:", list4)
+    print(list1)
+    print(list2)
+    print(list3)
+    print(list4)
 
-    print("List1 and List2 same sequence:", list1.same_sequence(list2))
-    print("List1 and List3 same sequence:", list1.same_sequence(list3))
-    print("List1 and List4 same sequence:", list1.same_sequence(list4))
+    print(list1.same_sequence(list2))
+    print(list1.same_sequence(list3))
+    print(list1.same_sequence(list4))

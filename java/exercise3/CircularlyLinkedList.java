@@ -112,6 +112,37 @@ public class CircularlyLinkedList<E> {
         return cloneList;
     }
 
+    public boolean sameSequence(CircularlyLinkedList<E> other) {
+        if (this.size() != other.size()) {
+            return false;
+        }
+
+        if (this.isEmpty() && other.isEmpty()) {
+            return true;
+        }
+
+        Node<E> start = this.tail.getNext();
+        for (int i = 0; i < this.size(); i++) {
+            Node<E> currentSelf = start;
+            Node<E> currentOther = other.tail.getNext();
+            boolean match = true;
+            for (int j = 0; j < this.size(); j++) {
+                if (!currentSelf.getElement().equals(currentOther.getElement())) {
+                    match = false;
+                    break;
+                }
+                currentSelf = currentSelf.getNext();
+                currentOther = currentOther.getNext();
+            }
+            if (match) {
+                return true;
+            }
+            start = start.getNext();
+        }
+
+        return false;
+    }
+
     public static void main(String[] args) {
         CircularlyLinkedList<String> originalList = new CircularlyLinkedList<>();
         originalList.addLast("MSP");
@@ -126,5 +157,34 @@ public class CircularlyLinkedList<E> {
         System.out.println(originalList);
         clonedList.addLast("XYZ");
         System.out.println(clonedList);
+
+        CircularlyLinkedList<String> list1 = new CircularlyLinkedList<>();
+        list1.addLast("MSP");
+        list1.addLast("ATL");
+        list1.addLast("BOS");
+
+        CircularlyLinkedList<String> list2 = new CircularlyLinkedList<>();
+        list2.addLast("ATL");
+        list2.addLast("BOS");
+        list2.addLast("MSP");
+
+        CircularlyLinkedList<String> list3 = new CircularlyLinkedList<>();
+        list3.addLast("BOS");
+        list3.addLast("MSP");
+        list3.addLast("ATL");
+
+        CircularlyLinkedList<String> list4 = new CircularlyLinkedList<>();
+        list4.addLast("MSP");
+        list4.addLast("BOS");
+        list4.addLast("ATL");
+
+        System.out.println(list1);
+        System.out.println(list2);
+        System.out.println(list3);
+        System.out.println(list4);
+
+        System.out.println(list1.sameSequence(list2));
+        System.out.println(list1.sameSequence(list3));
+        System.out.println(list1.sameSequence(list4));
     }
 }
