@@ -75,11 +75,29 @@ class SinglyLinkedList:
             node = node.next_node
         return "(" + ", ".join(result) + ")"
 
+    def concatenate(self, list2):
+        if self.is_empty():
+            self.head = list2.head
+            self.tail = list2.tail
+        elif not list2.is_empty():
+            self.tail.next_node = list2.head
+            self.tail = list2.tail
+        self.size += list2.size
+
 
 if __name__ == "__main__":
     list1 = SinglyLinkedList()
     list1.add_first("MSP")
     list1.add_last("ATL")
     list1.add_last("BOS")
-    list1.remove_first()
-    print(list1)
+    print("List 1:", list1)
+
+    list2 = SinglyLinkedList()
+    list2.add_first("LAX")
+    list2.add_first("ABC")
+    list2.add_first("XYZ")
+    list2.add_last("JFK")
+    print("List 2:", list2)
+
+    list1.concatenate(list2)
+    print("Concatenated List:", list1)
