@@ -185,10 +185,10 @@ public class DoublyLinkedList<E> {
 
   public static void main(String[] args) {
     DoublyLinkedList<String> list = new DoublyLinkedList<>();
-    list.addFirst("MSP");
+    list.addLast("MSP");
     list.addLast("ATL");
     list.addLast("BOS");
-    list.addFirst("LAX");
+    list.addLast("LAX");
     System.out.println("Before swapping: " + list);
 
     Node<String> node1 = list.header.getNext().getNext();
