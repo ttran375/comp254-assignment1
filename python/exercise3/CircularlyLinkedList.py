@@ -32,7 +32,7 @@ class CircularlyLinkedList:
     def add_first(self, e):
         if self.is_empty():
             self.tail = Node(e)
-            self.tail.next_node = self.tail  # a new list of one element
+            self.tail.next_node = self.tail
         else:
             newest = Node(e)
             newest.next_node = self.tail.next_node
@@ -66,11 +66,24 @@ class CircularlyLinkedList:
             current = current.next_node
         return "[" + ", ".join(result) + "]"
 
+    def clone(self):
+        clone_list = CircularlyLinkedList()
+        if not self.is_empty():
+            current = self.tail.next_node
+            clone_list.add_last(current.element)
+            current = current.next_node
+            while current != self.tail.next_node:
+                clone_list.add_last(current.element)
+                current = current.next_node
+        return clone_list
+
 
 if __name__ == "__main__":
     originalList = CircularlyLinkedList()
     originalList.add_last("MSP")
     originalList.add_last("ATL")
     originalList.add_last("BOS")
+    print("Original:", originalList)
 
-    print(originalList)  # Should print: [MSP, ATL, BOS]
+    clonedList = originalList
+    print("Cloned:", clonedList)
