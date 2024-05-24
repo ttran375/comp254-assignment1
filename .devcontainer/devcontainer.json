@@ -1,24 +1,30 @@
 {
-  "customizations": {
-      "vscode": {
-          "extensions": [
-              "vsls-contrib.gitdoc",
-              "vscjava.vscode-java-pack",
-              "redhat.fabric8-analytics",
-              "sohibe.java-generate-setters-getters",
-              "streetsidesoftware.code-spell-checker",
-              "DavidAnson.vscode-markdownlint",
-              "ms-python.pylint",
-              "ms-python.python",
-              "ms-python.flake8",
-              "ms-python.vscode-pylance",
-              "ms-python.mypy-type-checker",
-              "ms-python.black-formatter",
-              "EditorConfig.EditorConfig",
-              "VisualStudioExptTeam.intellicode-api-usage-examples",
-              "VisualStudioExptTeam.vscodeintellicode",
-              "GitHub.copilot"
-          ]
-      }
-  }
+    "name": "Python & Java",
+    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
+    "features": {
+        "ghcr.io/devcontainers/features/java:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vsls-contrib.gitdoc",
+                "vscjava.vscode-java-pack",
+                "redhat.fabric8-analytics",
+                "sohibe.java-generate-setters-getters",
+                "streetsidesoftware.code-spell-checker",
+                "DavidAnson.vscode-markdownlint",
+                "ms-python.pylint",
+                "ms-python.python",
+                "ms-python.flake8",
+                "ms-python.vscode-pylance",
+                "ms-python.mypy-type-checker",
+                "ms-python.black-formatter",
+                "EditorConfig.EditorConfig",
+                "VisualStudioExptTeam.intellicode-api-usage-examples",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "GitHub.copilot"
+            ]
+        }
+    }
 }
