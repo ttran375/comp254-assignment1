@@ -113,20 +113,34 @@ public class DoublyLinkedList<E> {
   }
 
   public static void main(String[] args) {
-    DoublyLinkedList<String> list1 = new DoublyLinkedList<String>();
-    list1.addFirst("MSP");
-    list1.addLast("ATL");
-    list1.addLast("BOS");
+    DoublyLinkedList<String> L1 = new DoublyLinkedList<String>();
+    L1.addFirst("MSP");
+    L1.addLast("ATL");
+    L1.addLast("BOS");
     //
-    list1.addFirst("LAX");
-    System.out.println(list1);
+    L1.addFirst("LAX");
+    System.out.println(L1);
 
-    DoublyLinkedList<String> list2 = new DoublyLinkedList<String>();
-    list2.addFirst("YYZ");
-    list2.addLast("YVR");
-    System.out.println(list2);
-    list1.concatenate(list2);
-    System.out.println(list1);
+    DoublyLinkedList<String> L2 = new DoublyLinkedList<String>();
+    L2.addFirst("YYZ");
+    L2.addLast("YVR");
+    System.out.println(L2);
+
+    DoublyLinkedList<String> L = L1.clone();
+    L.concatenate(L2);
+    System.out.println(L1);
+    System.out.println(L2);
+    System.out.println(L);
+  }
+
+  public DoublyLinkedList<E> clone() {
+    DoublyLinkedList<E> cloneList = new DoublyLinkedList<>();
+    Node<E> current = this.header.getNext();
+    while (current != this.trailer) {
+      cloneList.addLast(current.getElement());
+      current = current.getNext();
+    }
+    return cloneList;
   }
 
   private void concatenate(DoublyLinkedList<String> list2) {
