@@ -1,6 +1,6 @@
 package exercise2;
 
-public class DoublyLinkedList<E> {
+public class DoublyLinkedList<E> implements Cloneable {
   private static class Node<E> {
     private E element;
     private Node<E> prev;
@@ -126,21 +126,29 @@ public class DoublyLinkedList<E> {
     L2.addLast("YVR");
     System.out.println(L2);
 
-    DoublyLinkedList<String> L = L1.clone();
+    DoublyLinkedList<String> L = null;
+    try {
+      L = L1.clone();
+    } catch (CloneNotSupportedException e) {
+      e.printStackTrace();
+    }
     L.concatenate(L2);
     System.out.println(L1);
     System.out.println(L2);
     System.out.println(L);
   }
 
-  public DoublyLinkedList<E> clone() {
-    DoublyLinkedList<E> cloneList = new DoublyLinkedList<>();
-    Node<E> current = this.header.getNext();
-    while (current != this.trailer) {
-      cloneList.addLast(current.getElement());
-      current = current.getNext();
+  @SuppressWarnings("unchecked")
+  public DoublyLinkedList<E> clone() throws CloneNotSupportedException {
+    DoublyLinkedList<E> other = new DoublyLinkedList<>();
+    if (size > 0) {
+      Node<E> walk = header.getNext();
+      while (walk != trailer) {
+        other.addLast(walk.getElement());
+        walk = walk.getNext();
+      }
     }
-    return cloneList;
+    return other;
   }
 
   private void concatenate(DoublyLinkedList<String> list2) {
