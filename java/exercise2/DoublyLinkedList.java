@@ -113,29 +113,29 @@ public class DoublyLinkedList<E> implements Cloneable {
   }
 
   public static void main(String[] args) {
-    DoublyLinkedList<String> L1 = new DoublyLinkedList<String>();
-    L1.addFirst("MSP");
-    L1.addLast("ATL");
-    L1.addLast("BOS");
+    DoublyLinkedList<String> list1 = new DoublyLinkedList<String>();
+    list1.addFirst("MSP");
+    list1.addLast("ATL");
+    list1.addLast("BOS");
     //
-    L1.addFirst("LAX");
-    System.out.println(L1);
+    list1.addFirst("LAX");
+    System.out.println(list1);
 
-    DoublyLinkedList<String> L2 = new DoublyLinkedList<String>();
-    L2.addFirst("YYZ");
-    L2.addLast("YVR");
-    System.out.println(L2);
+    DoublyLinkedList<String> list2 = new DoublyLinkedList<String>();
+    list2.addFirst("YYZ");
+    list2.addLast("YVR");
+    System.out.println(list2);
 
-    DoublyLinkedList<String> L = null;
+    DoublyLinkedList<String> list = null;
     try {
-      L = L1.clone();
+      list = list1.clone();
     } catch (CloneNotSupportedException e) {
       e.printStackTrace();
     }
-    L.concatenate(L2);
-    System.out.println(L1);
-    System.out.println(L2);
-    System.out.println(L);
+    list.concatenate(list2);
+    System.out.println(list1);
+    System.out.println(list2);
+    System.out.println(list);
   }
 
   @SuppressWarnings("unchecked")

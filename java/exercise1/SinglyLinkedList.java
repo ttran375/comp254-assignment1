@@ -142,8 +142,10 @@ public class SinglyLinkedList<E> implements Cloneable {
       return;
     }
 
-    Node<E> prev1 = null, prev2 = null;
-    Node<E> curr1 = head, curr2 = head;
+    Node<E> prev1 = null;
+    Node<E> prev2 = null;
+    Node<E> curr1 = head;
+    Node<E> curr2 = head;
 
     while (curr1 != null && curr1 != node1) {
       prev1 = curr1;

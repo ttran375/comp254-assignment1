@@ -12,7 +12,6 @@ def create_list(elements):
 @pytest.mark.parametrize(
     "elements,node1_idx,node2_idx,expected_elements",
     [
-        # Test cases with numbers
         ([1, 2, 3, 4, 5], 1, 3, [1, 4, 3, 2, 5]),
         ([1, 2, 3, 4, 5], 0, 4, [5, 2, 3, 4, 1]),
         ([1, 2, 3, 4, 5], 2, 2, [1, 2, 3, 4, 5]),
@@ -38,7 +37,6 @@ def create_list(elements):
         ([1, 3, 5, 7, 9], 0, 4, [9, 3, 5, 7, 1]),
         ([1, 3, 5, 7, 9], 1, 3, [1, 7, 5, 3, 9]),
         ([1, 3, 5, 7, 9], 2, 4, [1, 3, 9, 7, 5]),
-        # Test cases with strings
         (["a", "b", "c", "d", "e"], 0, 4, ["e", "b", "c", "d", "a"]),
         (["a", "b", "c", "d", "e"], 1, 3, ["a", "d", "c", "b", "e"]),
         (["apple", "banana", "cherry"], 0, 2, ["cherry", "banana", "apple"]),

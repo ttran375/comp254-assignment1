@@ -148,27 +148,27 @@ public class SinglyLinkedList<E> implements Cloneable {
   }
 
   public static void main(String[] args) {
-    SinglyLinkedList<String> L1 = new SinglyLinkedList<String>();
-    L1.addFirst("MSP");
-    L1.addLast("ATL");
-    L1.addLast("BOS");
-    L1.addFirst("LAX");
-    System.out.println(L1);
+    SinglyLinkedList<String> list1 = new SinglyLinkedList<String>();
+    list1.addFirst("MSP");
+    list1.addLast("ATL");
+    list1.addLast("BOS");
+    list1.addFirst("LAX");
+    System.out.println(list1);
 
-    SinglyLinkedList<String> L2 = new SinglyLinkedList<String>();
-    L2.addFirst("YYZ");
-    L2.addFirst("YVR");
-    System.out.println(L2);
+    SinglyLinkedList<String> list2 = new SinglyLinkedList<String>();
+    list2.addFirst("YYZ");
+    list2.addFirst("YVR");
+    System.out.println(list2);
 
-    SinglyLinkedList<String> L = null;
+    SinglyLinkedList<String> list = null;
     try {
-      L = L1.clone();
+      list = list1.clone();
     } catch (CloneNotSupportedException e) {
       e.printStackTrace();
     }
-    L.concatenate(L2);
-    System.out.println(L1);
-    System.out.println(L2);
-    System.out.println(L);
+    list.concatenate(list2);
+    System.out.println(list1);
+    System.out.println(list2);
+    System.out.println(list);
   }
 }
