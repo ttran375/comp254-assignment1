@@ -2,33 +2,41 @@ import pytest
 from doubly_linked_list import DoublyLinkedList
 
 
-def create_list_with_nodes(data_list):
+def create_doubly_linked_list(elements):
     dll = DoublyLinkedList()
-    nodes = []
-    for data in data_list:
-        dll.add_node(data)
-        nodes.append(dll.tail)
-    return dll, nodes
+    for element in elements:
+        dll.add_node(element)
+    return dll
 
 
-@pytest.mark.parametrize(
-    "initial_data, idx1, idx2, expected_data",
-    [
-        (["A", "B", "C", "D"], 1, 3, ["A", "D", "C", "B"]),
-        (["A", "B", "C", "D"], 0, 2, ["C", "B", "A", "D"]),
-        (["A", "B", "C", "D"], 1, 1, ["A", "B", "C", "D"]),
-        (["A", "B", "C", "D"], 2, 3, ["A", "B", "D", "C"]),
-        (["A", "B", "C"], 0, 2, ["C", "B", "A"]),
-    ]
-)
-def test_swapTwoNodes(initial_data, idx1, idx2, expected_data):
-    dll, nodes = create_list_with_nodes(initial_data)
-    dll.swapTwoNodes(nodes[idx1], nodes[idx2])
-
+def get_node_by_index(dll, index):
     current = dll.head
-    result = []
-    while current:
-        result.append(current.data)
-        current = current.next
+    for _ in range(index):
+        if current is not None:
+            current = current.next
+    return current
 
-    assert result == expected_data
+
+@pytest.mark.parametrize("elements,node1_idx,node2_idx,expected_elements", [
+    (["A", "B", "C", "D", "E"], 1, 3, ["A", "D", "C", "B", "E"]),
+    (["A", "B", "C", "D", "E"], 0, 4, ["E", "B", "C", "D", "A"]),
+    (["A", "B", "C", "D", "E"], 2, 2, ["A", "B", "C", "D", "E"]),
+])
+def test_swap_two_nodes(elements, node1_idx, node2_idx, expected_elements):
+    dll = create_doubly_linked_list(elements)
+    node1 = get_node_by_index(dll, node1_idx)
+    node2 = get_node_by_index(dll, node2_idx)
+
+    dll.swapTwoNodes(node1, node2)
+    expected_dll = create_doubly_linked_list(expected_elements)
+
+    current_expected = expected_dll.head
+    current_actual = dll.head
+
+    while current_expected is not None:
+        assert current_expected.data == current_actual.data
+        current_expected = current_expected.next
+        current_actual = current_actual.next
+
+    assert current_actual is None
+    assert current_expected is None
