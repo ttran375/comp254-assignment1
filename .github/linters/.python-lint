@@ -28,7 +28,8 @@ disable:too-few-public-methods,
   missing-class-docstring,
   missing-function-docstring,
   # Pylint E0401
-  import-error
+  import-error,
+  invalid-name
 
 # Naming style to be enforced
 method-naming-style=camelCase
