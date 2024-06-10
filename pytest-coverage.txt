@@ -1,0 +1,12 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.2.1, pluggy-1.5.0
+rootdir: /workspaces/comp254-assignment1
+collected 100 items
+
+python/exercise1/test_doubly_linked_list.py ............................ [ 28%]
+......................                                                   [ 50%]
+python/exercise1/test_singly_linked_list.py ............................ [ 78%]
+......................                                                   [100%]
+
+-------- generated xml file: /workspaces/comp254-assignment1/pytest.xml --------
+============================= 100 passed in 0.15s ==============================
