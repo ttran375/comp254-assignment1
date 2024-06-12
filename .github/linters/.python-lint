@@ -14,6 +14,10 @@ ignored-modules=invoke
 
 [MESSAGES CONTROL]
 disable:too-few-public-methods,
+  duplicate-code,
+  redefined-outer-name,
+  invalid-name,
+  bad-plugin-value,
   missing-return-doc,
   missing-return-type-doc,
   missing-param-doc,
@@ -28,10 +32,36 @@ disable:too-few-public-methods,
   missing-class-docstring,
   missing-function-docstring,
   # Pylint E0401
-  import-error,
-  invalid-name
+  import-error
+
+[FORMAT]
+# Maximum number of characters on a single line.
+max-line-length=79
+ignore-long-lines=<?https?://
 
 # Naming style to be enforced
 method-naming-style=camelCase
 argument-naming-style=any
 function-naming-style=snake_case
+
+[REPORTS]
+score=yes
+# Set the output format. Available formats are text, parseable, colorized, msvs
+# (visual studio) and html
+output-format=parseable
+
+# Template used to display messages. This is a python new-style format string
+# used to format the message information. See doc for all details.
+msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}'
+
+# Tells whether to display a full report or only the messages
+reports=n
+ignored-argument-names=args|kwargs
+
+# Regular expression which should only match functions or classes name which do
+# not require a docstring
+no-docstring-rgx=^_|__init__|Meta|__str__|unicode
+
+# Whether to accept totally missing raises documentation in the docstring of a
+# function that raises an exception
+accept-no-raise-doc=no

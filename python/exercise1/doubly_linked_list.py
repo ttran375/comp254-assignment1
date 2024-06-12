@@ -23,7 +23,8 @@ class DoublyLinkedList:
         newNode = Node(data)
 
         # Checking where the head and tail pointer is pointing.
-        # if first node is added to the list then below condition should be true.
+        # if first node is added to the list then below condition should be
+        # true.
         if self.head is None:
             self.head = newNode
             newNode.previous = newNode.next = None
