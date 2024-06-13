@@ -74,15 +74,15 @@ class SinglyLinkedList:
             result.append(str(node.element))
             node = node.next_node
         return "(" + ", ".join(result) + ")"
-    
-    def concatenate(self, list2):
+
+    def concatenate(self, new_list):
         if self.is_empty():
-            self.head = list2.head
-            self.tail = list2.tail
-        elif not list2.is_empty():
-            self.tail.next_node = list2.head
-            self.tail = list2.tail
-        self.size += list2.size
+            self.head = new_list.head
+            self.tail = new_list.tail
+        elif not new_list.is_empty():
+            self.tail.next_node = new_list.head
+            self.tail = new_list.tail
+        self.size += new_list.size
 
 
 def clone_linked_list(l1):
