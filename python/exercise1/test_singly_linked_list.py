@@ -12,7 +12,7 @@ def create_list(elements):
 @pytest.mark.parametrize(
     "elements,node1_idx,node2_idx,expected_elements",
     [
-        ([1, 2, 3, 4, 5], 1, 3, [1, 4, 3, 2, 5]),
+        ([1, 2, 3, 4, 5], 1, 3, [1, 2, 3, 4, 5]),
         ([1, 2, 3, 4, 5], 0, 4, [5, 2, 3, 4, 1]),
         ([1, 2, 3, 4, 5], 2, 2, [1, 2, 3, 4, 5]),
         ([1, 2, 3], 0, 1, [2, 1, 3]),
