@@ -1,5 +1,5 @@
 import pytest
-from doubly_linked_list import DoublyLinkedList
+from .doubly_linked_list import DoublyLinkedList
 
 
 def create_doubly_linked_list(elements):
@@ -127,7 +127,7 @@ def test_swap_two_nodes(elements, node1_idx, node2_idx, expected_elements):
     node1 = get_node_by_index(dll, node1_idx)
     node2 = get_node_by_index(dll, node2_idx)
 
-    dll.swapTwoNodes(node1, node2)
+    dll.swap_two_nodes(node1, node2)
     expected_dll = create_doubly_linked_list(expected_elements)
 
     current_expected = expected_dll.head
