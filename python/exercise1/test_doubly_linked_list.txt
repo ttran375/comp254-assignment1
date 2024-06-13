@@ -68,8 +68,18 @@ def get_node_by_index(dll, index):
             2,
             ["alpha", "gamma", "beta", "delta"],
         ),
-        (["one", "two", "three", "four"], 0, 3, ["four", "two", "three", "one"]),
-        (["one", "two", "three", "four"], 1, 3, ["one", "four", "three", "two"]),
+        (
+            ["one", "two", "three", "four"],
+            0,
+            3,
+            ["four", "two", "three", "one"],
+        ),
+        (
+            ["one", "two", "three", "four"],
+            1,
+            3,
+            ["one", "four", "three", "two"],
+        ),
         (
             ["apple", "banana", "cherry", "date"],
             0,
@@ -98,8 +108,18 @@ def get_node_by_index(dll, index):
             3,
             ["test", "strings", "with", "case"],
         ),
-        (["python", "java", "c++", "rust"], 0, 3, ["rust", "java", "c++", "python"]),
-        (["python", "java", "c++", "rust"], 1, 2, ["python", "c++", "java", "rust"]),
+        (
+            ["python", "java", "c++", "rust"],
+            0,
+            3,
+            ["rust", "java", "c++", "python"],
+        ),
+        (
+            ["python", "java", "c++", "rust"],
+            1,
+            2,
+            ["python", "c++", "java", "rust"],
+        ),
     ],
 )
 def test_swap_two_nodes(elements, node1_idx, node2_idx, expected_elements):

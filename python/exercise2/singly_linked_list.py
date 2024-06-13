@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 class Node:
     def __init__(self, element, next_node=None):
         self.element = element
@@ -72,39 +75,11 @@ class SinglyLinkedList:
             node = node.next_node
         return "(" + ", ".join(result) + ")"
 
-    def clone(self):
-        new_list = SinglyLinkedList()
-        current = self.head
-        while current is not None:
-            new_list.add_last(current.element)
-            current = current.next_node
-        return new_list
-
-    def concatenate(self, list2):
-        if self.is_empty():
-            self.head = list2.head
-            self.tail = list2.tail
-        elif not list2.is_empty():
-            self.tail.next_node = list2.head
-            self.tail = list2.tail
-        self.size += list2.size
-
 
 if __name__ == "__main__":
-    L1 = SinglyLinkedList()
-    L1.add_first("MSP")
-    L1.add_last("ATL")
-    L1.add_last("BOS")
-    L1.add_first("LAX")
-    print(L1)
-
-    L2 = SinglyLinkedList()
-    L2.add_first("YYZ")
-    L2.add_first("YVR")
-    print(L2)
-
-    L = L1.clone()
-    L.concatenate(L2)
-    print(L1)
-    print(L2)
-    print(L)
+    list1 = SinglyLinkedList()
+    list1.add_first("MSP")
+    list1.add_last("ATL")
+    list1.add_last("BOS")
+    list1.remove_first()
+    print(list1)

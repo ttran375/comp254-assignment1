@@ -81,12 +81,12 @@
 
   <!-- Miscellaneous other checks.                   -->
   <!-- See https://checkstyle.org/checks/misc/index.html -->
-  <module name="RegexpSingleline">
+  <!-- <module name="RegexpSingleline">
     <property name="format" value="\s+$"/>
     <property name="minimum" value="0"/>
     <property name="maximum" value="0"/>
     <property name="message" value="Line has trailing spaces."/>
-  </module>
+  </module> -->
 
   <!-- Checks for Headers                                -->
   <!-- See https://checkstyle.org/checks/header/index.html   -->
@@ -100,10 +100,10 @@
     <!-- Checks for Javadoc comments.                     -->
     <!-- See https://checkstyle.org/checks/javadoc/index.html -->
     <module name="InvalidJavadocPosition"/>
-    <module name="JavadocMethod"/>
-    <module name="JavadocType"/>
-    <!-- <module name="JavadocVariable"/> -->
-    <module name="JavadocStyle"/>
+    <!-- <module name="JavadocMethod"/> -->
+    <!-- <module name="JavadocType"/> -->
+    <module name="JavadocVariable"/>
+    <!-- <module name="JavadocStyle"/> -->
     <!-- <module name="MissingJavadocMethod"/> -->
 
     <!-- Checks for Naming Conventions.                  -->
@@ -113,7 +113,7 @@
     <module name="LocalVariableName"/>
     <module name="MemberName"/>
     <module name="MethodName"/>
-    <!-- <module name="PackageName"/> -->
+    <module name="PackageName"/>
     <module name="ParameterName"/>
     <module name="StaticVariableName"/>
     <module name="TypeName"/>
@@ -143,7 +143,7 @@
     <module name="ParenPad"/>
     <module name="TypecastParenPad"/>
     <module name="WhitespaceAfter"/>
-    <module name="WhitespaceAround"/>
+    <!-- <module name="WhitespaceAround"/> -->
 
     <!-- Modifier Checks                                    -->
     <!-- See https://checkstyle.org/checks/modifier/index.html -->
@@ -154,7 +154,7 @@
     <!-- See https://checkstyle.org/checks/blocks/index.html -->
     <module name="AvoidNestedBlocks"/>
     <module name="EmptyBlock"/>
-    <module name="LeftCurly"/>
+    <!-- <module name="LeftCurly"/> -->
     <!-- <module name="NeedBraces"/> -->
     <module name="RightCurly"/>
 

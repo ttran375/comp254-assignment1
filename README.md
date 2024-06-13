@@ -761,7 +761,7 @@ public class CircularlyLinkedList<E> {
 
 ```
 
-### SinglyLinkedList.py
+### singly_linked_list.py
 
 ``` python
 # -*- coding: utf-8 -*-
@@ -852,7 +852,7 @@ if __name__ == "__main__":
 
 ```
 
-### DoublyLinkedList.py
+### doubly_linked_list.py
 
 ``` python
 class Node:
@@ -925,7 +925,7 @@ if __name__ == "__main__":
 
 ```
 
-### CircularlyLinkedList.py
+### circularly_linked_list.py
 
 ``` python
 # -*- coding: utf-8 -*-
