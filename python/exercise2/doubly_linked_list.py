@@ -44,14 +44,14 @@ class DoublyLinkedList:
         else:
             print("List does not have any nodes")
 
-    def concatenate(self, list2):
+    def concatenate(self, new_list):
         if self.is_empty():
-            self.head = list2.head
-            self.tail = list2.tail
-        elif not list2.is_empty():
-            self.tail.next = list2.head
-            list2.head.previous = self.tail
-            self.tail = list2.tail
+            self.head = new_list.head
+            self.tail = new_list.tail
+        elif not new_list.is_empty():
+            self.tail.next = new_list.head
+            new_list.head.previous = self.tail
+            self.tail = new_list.tail
 
 
 def clone_linked_list(l1):
