@@ -1,5 +1,5 @@
 import pytest
-from singly_linked_list import SinglyLinkedList
+from .singly_linked_list import SinglyLinkedList
 
 
 def create_list(elements):
@@ -87,6 +87,6 @@ def test_swap_two_nodes(elements, node1_idx, node2_idx, expected_elements):
     for _ in range(node2_idx):
         node2 = node2.next_node
 
-    sll.swapTwoNodes(node1, node2)
+    sll.swap_two_nodes(node1, node2)
     expected_sll = create_list(expected_elements)
     assert sll == expected_sll

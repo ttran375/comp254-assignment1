@@ -75,11 +75,51 @@ class SinglyLinkedList:
             node = node.next_node
         return "(" + ", ".join(result) + ")"
 
+    def swap_two_nodes(self, target_node1, target_node2):
+        if target_node1 == target_node2:
+            return
+
+        prev1 = prev2 = None
+        curr1 = curr2 = self.head
+
+        while curr1 and curr1 != target_node1:
+            prev1 = curr1
+            curr1 = curr1.next_node
+
+        while curr2 and curr2 != target_node2:
+            prev2 = curr2
+            curr2 = curr2.next_node
+
+        if not curr1 or not curr2:
+            return
+
+        if prev1:
+            prev1.next_node = curr2
+        else:
+            self.head = curr2
+
+        if prev2:
+            prev2.next_node = curr1
+        else:
+            self.head = curr1
+
+        curr1.next_node, curr2.next_node = curr2.next_node, curr1.next_node
+
+        if curr1.next_node is None:
+            self.tail = curr1
+        elif curr2.next_node is None:
+            self.tail = curr2
+
 
 if __name__ == "__main__":
     list1 = SinglyLinkedList()
     list1.add_first("MSP")
     list1.add_last("ATL")
     list1.add_last("BOS")
-    list1.remove_first()
+    list1.add_first("LAX")
+    print(list1)
+
+    first_node = list1.head.next_node
+    second_node = list1.tail
+    list1.swap_two_nodes(first_node, second_node)
     print(list1)
