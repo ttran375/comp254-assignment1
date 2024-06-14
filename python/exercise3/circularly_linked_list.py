@@ -69,6 +69,17 @@ class CircularlyLinkedList:
             current = current.next_node
         return "[" + ", ".join(result) + "]"
 
+    def clone(self):
+        clone_list = CircularlyLinkedList()
+        if not self.is_empty():
+            current = self.tail.next_node
+            clone_list.add_last(current.element)
+            current = current.next_node
+            while current != self.tail.next_node:
+                clone_list.add_last(current.element)
+                current = current.next_node
+        return clone_list
+
 
 if __name__ == "__main__":
     originalList = CircularlyLinkedList()
