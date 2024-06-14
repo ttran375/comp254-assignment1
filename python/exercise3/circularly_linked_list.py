@@ -80,6 +80,30 @@ class CircularlyLinkedList:
                 current = current.next_node
         return clone_list
 
+    def same_sequence(self, other):
+        if len(self) != len(other):
+            return False
+
+        if self.is_empty() and other.is_empty():
+            return True
+
+        start = self.tail.next_node
+        for _ in range(len(self)):
+            current_self = start
+            current_other = other.tail.next_node
+            match = True
+            for _ in range(len(self)):
+                if current_self.element != current_other.element:
+                    match = False
+                    break
+                current_self = current_self.next_node
+                current_other = current_other.next_node
+            if match:
+                return True
+            start = start.next_node
+
+        return False
+
 
 if __name__ == "__main__":
     originalList = CircularlyLinkedList()
