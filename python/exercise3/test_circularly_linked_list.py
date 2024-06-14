@@ -95,6 +95,102 @@ def test_clone(elements):
         assert current_original is not current_cloned
 
 
+@pytest.mark.parametrize(
+    "list1, list2, expected",
+    [
+        # Basic tests with strings
+        (["MSP", "ATL", "BOS"], ["ATL", "BOS", "MSP"], True),
+        (["MSP", "ATL", "BOS"], ["MSP", "BOS", "ATL"], False),
+        (["MSP", "ATL", "BOS"], ["MSP", "ATL"], False),
+        (["MSP", "ATL", "BOS"], ["MSP", "ATL", "BOS"], True),
+        # Empty lists
+        ([], [], True),
+        ([], ["MSP"], False),
+        (["MSP"], [], False),
+        # Single element lists
+        (["A"], ["A"], True),
+        (["A"], ["B"], False),
+        (["A"], ["A", "B"], False),
+        # Numeric values
+        ([1, 2, 3], [2, 3, 1], True),
+        ([1, 2, 3], [1, 3, 2], False),
+        ([1], [1], True),
+        ([1], [2], False),
+        # Mixed data types
+        ([1, "two", 3.0], ["two", 3.0, 1], True),
+        ([1, "two", 3.0], [1, 3.0, "two"], False),
+        ([1, "two"], ["two", 1], True),
+        ([1, "two"], ["two"], False),
+        # Duplicates in list
+        (["A", "B", "A"], ["B", "A", "A"], True),
+        (["A", "B", "A"], ["A", "B", "B"], False),
+        # Different lengths
+        (["A", "B"], ["A", "B", "C"], False),
+        (["A", "B", "C"], ["A", "B"], False),
+        # Complex objects
+        ([{"key": "value"}, 42], [42, {"key": "value"}], True),
+        ([{"key": "value"}, 42], [42, {"key": "different_value"}], False),
+        ([{"key": "value"}], [{"key": "value"}], True),
+        ([{"key": "value"}], [{"key": "different_value"}], False),
+        # Boolean values
+        ([True, False, True], [False, True, True], True),
+        ([True, False, True], [True, True, False], True),
+        ([True], [True], True),
+        ([False], [False], True),
+        # Tuples
+        ([(1, 2), (3, 4)], [(3, 4), (1, 2)], True),
+        ([(1, 2), (3, 4)], [(1, 2), (4, 3)], False),
+        ([(1, 2)], [(2, 1)], False),
+        # Mixed nested lists
+        ([[1, 2], [3, 4]], [[3, 4], [1, 2]], True),
+        ([[1, 2], [3, 4]], [[1, 2], [4, 3]], False),
+        ([[1, 2]], [[2, 1]], False),
+        # String representations
+        (["hello", "world"], ["world", "hello"], True),
+        (["hello", "world"], ["hello", "planet"], False),
+        (["hello"], ["world"], False),
+        # More edge cases
+        # Lists with `None` values
+        ([None, "A", "B"], ["B", None, "A"], True),
+        ([None, "A", "B"], ["A", "B", None], True),
+        ([None], [None], True),
+        ([None], ["A"], False),
+        # Lists with nested structures
+        (
+            [["nested", "list"], {"key": "value"}],
+            [{"key": "value"}, ["nested", "list"]],
+            True,
+        ),
+        (
+            [["nested", "list"], {"key": "value"}],
+            [["nested", "list"], {"key": "value"}],
+            True,
+        ),
+        (
+            [["nested", "list"], {"key": "value"}],
+            [{"key": "value"}, ["different", "list"]],
+            False,
+        ),
+        ([["nested", "list"]], [["different", "list"]], False),
+        # Lists with different data types
+        ([1, "one", 2.0], ["one", 2.0, 1], True),
+        ([1, "one", 2.0], [2.0, 1, "two"], False),
+        ([1, "one"], ["one", 2], False),
+    ],
+)
+def test_same_sequence(list1, list2, expected):
+    L1 = CircularlyLinkedList()
+    L2 = CircularlyLinkedList()
+
+    for item in list1:
+        L1.add_last(item)
+
+    for item in list2:
+        L2.add_last(item)
+
+    assert L1.same_sequence(L2) == expected
+
+
 # Run tests
 if __name__ == "__main__":
     pytest.main()
