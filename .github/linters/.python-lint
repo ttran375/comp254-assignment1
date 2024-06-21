@@ -440,7 +440,7 @@ disable=raw-checker-failed,
         missing-module-docstring,
         missing-class-docstring,
         too-few-public-methods,
-        missing-function-docstring,
+        # missing-function-docstring,
         duplicate-code
 
 # Enable the message, report, category or checker with the given id(s). You can
