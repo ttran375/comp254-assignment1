@@ -45,12 +45,24 @@ class DoublyLinkedList:
             print("List does not have any nodes")
 
     def concatenate(self, new_list):
+        """
+        Concatenates another doubly linked list to the end of this list.
+        """
+        # Set head and tail to the new list's head and tail if the current list is empty
         if self.is_empty():
             self.head = new_list.head
             self.tail = new_list.tail
+
+        # If the new list is not empty
         elif not new_list.is_empty():
+
+            # Link the last node of the current list to the first node of the new list
             self.tail.next = new_list.head
+
+            # Set the previous pointer of the new list's head to the current list's tail
             new_list.head.previous = self.tail
+
+            # Update the tail to be the last node of the new list
             self.tail = new_list.tail
 
 
