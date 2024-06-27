@@ -1,5 +1,7 @@
 # Lab Assignment #1 -- Using Fundamental Data Structures
 
+[![Open in Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ttran375/comp254-assignment1/blob/main/src/notebook.ipynb)
+
 ## Exercise 1
 
 **If your first name starts with a letter from A-J inclusively:**
