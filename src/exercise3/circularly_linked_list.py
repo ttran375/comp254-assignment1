@@ -70,25 +70,47 @@ class CircularlyLinkedList:
         return "[" + ", ".join(result) + "]"
 
     def clone(self):
+        """
+        Creates a clone of the circularly linked list.
+        """
+        # Initialize an empty clone list.
         clone_list = CircularlyLinkedList()
+
+        # If the current list is not empty
         if not self.is_empty():
+
+            # Add the element after tail to the clone list
             current = self.tail.next_node
             clone_list.add_last(current.element)
+
+            # Traverse other elements and add them to the clone list
             current = current.next_node
             while current != self.tail.next_node:
                 clone_list.add_last(current.element)
                 current = current.next_node
+
+        # Return the cloned list
         return clone_list
 
     def same_sequence(self, other):
+        """
+        Checks if two circularly linked lists have the same sequence of elements.
+        """
+        # Return false if the lengths of the two lists are different
         if len(self) != len(other):
             return False
 
+        # Return true if both lists are empty
         if self.is_empty() and other.is_empty():
             return True
 
+        # Start from the element after tail
         start = self.tail.next_node
+
+        # Loop through each possible starting point in the current list
         for _ in range(len(self)):
+
+            # Compare the elements of the two lists starting from the current position
             current_self = start
             current_other = other.tail.next_node
             match = True
@@ -98,17 +120,13 @@ class CircularlyLinkedList:
                     break
                 current_self = current_self.next_node
                 current_other = current_other.next_node
+
+            # If all elements match, the sequences are the same
             if match:
                 return True
+
+            # Move to the next starting point in the current list
             start = start.next_node
 
+        # Return False if no matching sequence is found
         return False
-
-
-if __name__ == "__main__":
-    originalList = CircularlyLinkedList()
-    originalList.add_last("MSP")
-    originalList.add_last("ATL")
-    originalList.add_last("BOS")
-
-    print(originalList)  # Should print: [MSP, ATL, BOS]
