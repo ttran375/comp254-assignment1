@@ -74,21 +74,3 @@ def clone_linked_list(l1):
             dl.add_node(temp.data)
             temp = temp.next
     return dl
-
-
-if __name__ == "__main__":
-    list1 = DoublyLinkedList()
-    list1.add_node("MSP")
-    list1.add_node("ATL")
-    list1.add_node("BOS")
-    list1.display_list()
-
-    list2 = DoublyLinkedList()
-    list2.add_node("ABC")
-    list2.add_node("XYZ")
-    list2.add_node("MNP")
-    list2.display_list()
-
-    list_concat = clone_linked_list(list1)
-    list_concat.concatenate(list2)
-    list_concat.display_list()

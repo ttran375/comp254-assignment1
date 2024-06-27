@@ -91,17 +91,3 @@ def clone_linked_list(l1):
             dl.add_node(temp.data)
             temp = temp.next
     return dl
-
-
-if __name__ == "__main__":
-    list1 = DoublyLinkedList()
-    list1.add_node("MSP")
-    list1.add_node("ATL")
-    list1.add_node("BOS")
-    list1.add_node("LAX")
-    list1.display_list()
-
-    first_node = list1.head.next
-    second_node = list1.tail
-    list1.swap_two_nodes(first_node, second_node)
-    list1.display_list()

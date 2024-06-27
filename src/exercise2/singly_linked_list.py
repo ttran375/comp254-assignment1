@@ -105,21 +105,3 @@ def clone_linked_list(l1):
             dl.add_last(temp.element)
             temp = temp.next_node
     return dl
-
-
-if __name__ == "__main__":
-    list1 = SinglyLinkedList()
-    list1.add_first("MSP")
-    list1.add_last("ATL")
-    list1.add_last("BOS")
-    print(list1)
-
-    list2 = SinglyLinkedList()
-    list2.add_first("ABC")
-    list2.add_last("XYZ")
-    list2.add_first("MNP")
-    print(list2)
-
-    list_concat = clone_linked_list(list1)
-    list_concat.concatenate(list2)
-    print(list_concat)

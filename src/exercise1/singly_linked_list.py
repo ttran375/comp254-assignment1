@@ -121,17 +121,3 @@ class SinglyLinkedList:
             self.tail = curr1
         elif curr2.next_node is None:
             self.tail = curr2
-
-
-if __name__ == "__main__":
-    list1 = SinglyLinkedList()
-    list1.add_first("MSP")
-    list1.add_last("ATL")
-    list1.add_last("BOS")
-    list1.add_first("LAX")
-    print(list1)
-
-    first_node = list1.head.next_node
-    second_node = list1.tail
-    list1.swap_two_nodes(first_node, second_node)
-    print(list1)
