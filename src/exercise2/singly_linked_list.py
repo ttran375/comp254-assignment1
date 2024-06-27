@@ -76,12 +76,24 @@ class SinglyLinkedList:
         return "(" + ", ".join(result) + ")"
 
     def concatenate(self, new_list):
+        """
+        Concatenates another singly linked list to the end of this list.
+        """
+        # Set head and tail to the new list's head and tail if the current list is empty
         if self.is_empty():
             self.head = new_list.head
             self.tail = new_list.tail
+
+        # If the new list is not empty
         elif not new_list.is_empty():
+
+            # Link the last node of the current list to the first node of the new list
             self.tail.next_node = new_list.head
+
+            # Update the tail to be the last node of the new list
             self.tail = new_list.tail
+
+        # Update the size of the current list by adding the size of the new list
         self.size += new_list.size
 
 
