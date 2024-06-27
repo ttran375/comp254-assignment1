@@ -48,38 +48,35 @@ class DoublyLinkedList:
         """
         Swaps two nodes in a doubly linked list.
         """
-        # Check if the nodes are the same; if so, no need to swap
+        # No need to swap if the nodes are the same
         if node1 is node2:
             return
 
-        # Swap the next pointers of node1 and node2
+        # Adjust the previous pointers of the nodes following node1 and node2.
         if node1.next:
             node1.next.previous = node2
         if node2.next:
             node2.next.previous = node1
 
-        # Swap the next pointers
+        # Swap the next pointers of node1 and node2.
         node1.next, node2.next = node2.next, node1.next
 
-        # Swap the previous pointers of node1 and node2
+        # Adjust the next pointers of the nodes preceding node1 and node2.
         if node1.previous:
             node1.previous.next = node2
         if node2.previous:
             node2.previous.next = node1
 
-        # Swap the previous pointers
-        node1.previous, node2.previous = (
-            node2.previous,
-            node1.previous,
-        )
+        # Swap the previous pointers of node1 and node2.
+        node1.previous, node2.previous = node2.previous, node1.previous
 
-        # Update the head of the list if necessary
+        # Update the head of the list if necessary.
         if self.head == node1:
             self.head = node2
         elif self.head == node2:
             self.head = node1
 
-        # Update the tail of the list if necessary
+        # Update the tail of the list if necessary.
         if self.tail == node1:
             self.tail = node2
         elif self.tail == node2:

@@ -75,65 +75,48 @@ class SinglyLinkedList:
             node = node.next_node
         return "(" + ", ".join(result) + ")"
 
-    def swap_two_nodes(self, target_node1, target_node2):
+    def swap_two_nodes(self, node1, node2):
         """
         Swaps two nodes in a singly linked list.
-
-        This method swaps the positions of two nodes identified by `target_node1` and `target_node2`
-        within the singly linked list. If either of the target nodes is not found in the list, or
-        if both target nodes are the same, the method does nothing.
-
-        Parameters:
-        - self: The instance of the class containing the linked list.
-        - target_node1: The first node to be swapped.
-        - target_node2: The second node to be swapped.
-
-        Returns:
-        None
-
-        Note:
-        - The method assumes that `target_node1` and `target_node2` are actual node objects and not
-        values contained within the nodes.
-        - The method updates the `head` and `tail` of the list if necessary.
-        - Swapping is done by changing the `next_node` pointers of the nodes preceding
-        `target_node1` and `target_node2`, as well as the `next_node` pointers of `target_node1`
-        and `target_node2` themselves.
         """
-        if target_node1 == target_node2:
-            return  # No action required if the nodes are the same
+        # No need to swap if the nodes are the same
+        if node1 == node2:
+            return
 
+        # Initialize previous and current pointers for both nodes.
         prev1 = prev2 = None
         curr1 = curr2 = self.head
 
-        # Find target_node1 and its predecessor
-        while curr1 and curr1 != target_node1:
+        # Find node1 and keep track of its previous node.
+        while curr1 and curr1 != node1:
             prev1 = curr1
             curr1 = curr1.next_node
 
-        # Find target_node2 and its predecessor
-        while curr2 and curr2 != target_node2:
+        # Find node2 and keep track of its previous node.
+        while curr2 and curr2 != node2:
             prev2 = curr2
             curr2 = curr2.next_node
 
-        # Exit if either node is not found
+        # If either node1 or node2 is not found, no action is needed.
         if not curr1 or not curr2:
             return
 
-        # Swap next_node pointers of predecessors
+        # Update the previous node's next pointer for node1.
         if prev1:
             prev1.next_node = curr2
         else:
-            self.head = curr2  # Update head if target_node1 was head
+            self.head = curr2
 
+        # Update the previous node's next pointer for node2.
         if prev2:
             prev2.next_node = curr1
         else:
-            self.head = curr1  # Update head if target_node2 was head
+            self.head = curr1
 
-        # Swap next_node pointers of target nodes
+        # Swap the next pointers of node1 and node2.
         curr1.next_node, curr2.next_node = curr2.next_node, curr1.next_node
 
-        # Update tail if necessary
+        # Update the tail if necessary.
         if curr1.next_node is None:
             self.tail = curr1
         elif curr2.next_node is None:
