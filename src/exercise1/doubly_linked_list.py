@@ -36,8 +36,8 @@ class DoublyLinkedList:
     def display_list(self):
         # Creating temp pointer to traverse
         temp = self.head
-        if temp is not None:
-            while temp is not None:
+        if temp:
+            while temp:
                 print(temp.data, end=" -> ")
                 temp = temp.next
             print("NULL")
@@ -47,47 +47,24 @@ class DoublyLinkedList:
     def swap_two_nodes(self, node1, node2):
         """
         Swaps two nodes in a doubly linked list.
-
-        This method swaps two nodes, `node1` and `node2`, by adjusting their `next` and `previous`
-        pointers.
-        It handles cases where the nodes to be swapped are adjacent and also updates the `head` and
-        `tail` of the list
-        if either node is currently at one of these positions. The swap does not proceed if `node1`
-        and `node2` are the same.
-
-        Parameters:
-            node1 (Node): The first node to swap.
-            node2 (Node): The second node to swap.
-
-        Returns:
-            None: This method returns nothing and modifies the list in-place.
-
-        Raises:
-            AttributeError: If either `node1` or `node2` is not of the correct `Node` type or is
-            None.
-
-        Example:
-            Given a doubly linked list: A <-> B <-> C <-> D,
-            if `node1` is B and `node2` is C, calling `swap_two_nodes(node1, node2)` will modify
-            the list to: A <-> C <-> B <-> D.
         """
         # Check if the nodes are the same; if so, no need to swap
         if node1 is node2:
             return
 
         # Swap the next pointers of node1 and node2
-        if node1.next is not None:
+        if node1.next:
             node1.next.previous = node2
-        if node2.next is not None:
+        if node2.next:
             node2.next.previous = node1
 
         # Swap the next pointers
         node1.next, node2.next = node2.next, node1.next
 
         # Swap the previous pointers of node1 and node2
-        if node1.previous is not None:
+        if node1.previous:
             node1.previous.next = node2
-        if node2.previous is not None:
+        if node2.previous:
             node2.previous.next = node1
 
         # Swap the previous pointers
